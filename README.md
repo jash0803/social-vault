@@ -8,7 +8,7 @@
 
 - **Centralized Storage**: Keep all your social media links in one organized location.
 - **Quick Access**: Easily copy and paste your links directly into forms or messages.
-- **User-Friendly Interface**: Sleek, responsive design with an Apple-inspired aesthetic.
+- **User-Friendly Interface**: Sleek, responsive design with an neo-brutalism theme.
 - **Cross-Platform Compatibility**: Works seamlessly across different devices and browsers.
 
 ---
