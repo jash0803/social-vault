@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Social Links Manager",
+    "version": "0.0.0.1",
+    "description": "Store and manage your social media links.",
+    "permissions": ["clipboardWrite"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+      }
+    }
+  }
+  
