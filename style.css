@@ -2,8 +2,8 @@ body {
   font-family: "Space Mono", monospace;
   padding: 0;
   margin: 0;
-  background-color: #ffde00;
-  color: #000;
+  background-color: #00897B;
+  color: #004D40;
 }
 
 #container {
@@ -12,24 +12,24 @@ body {
   max-height: 600px;
   margin: 0;
   padding: 20px;
-  background: #fff;
-  border: 3px solid #000;
+  background: #E8F5E9;
+  border: 3px solid #004D40;
   border-radius: 2px;
-  box-shadow: 6px 6px 0 #000;
+  box-shadow: 6px 6px 0 #004D40;
   overflow-y: auto;
 }
 
 h2 {
   text-align: center;
-  color: #000;
+  color: #004D40;
   font-weight: 800;
   font-size: 1.8rem;
   text-transform: uppercase;
   margin: 5px 0 15px 0;
   padding: 8px;
-  background: #ffde00;
-  border: 3px solid #000;
-  box-shadow: 4px 4px 0 #000;
+  background: #00E676;
+  border: 3px solid #004D40;
+  box-shadow: 4px 4px 0 #004D40;
 }
 
 form {
@@ -42,42 +42,42 @@ form {
 form input {
   padding: 8px 12px;
   height: 36px;
-  border: 3px solid #000;
+  border: 3px solid #004D40;
   border-radius: 2px;
   font-size: 14px;
   font-family: inherit;
-  background: #f0f0f0;
+  background: #E8F5E9;
 }
 
 form input:focus {
   outline: none;
   background: #fff;
-  border-color: #ff2e00;
-  box-shadow: 3px 3px 0 #000;
+  border-color: #00E676;
+  box-shadow: 3px 3px 0 #004D40;
 }
 
 form button {
   padding: 12px;
-  background: #ff2e00;
-  color: #fff;
-  border: 3px solid #000;
+  background: #00E676;
+  color: #004D40;
+  border: 3px solid #004D40;
   border-radius: 2px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 3px 3px 0 #000;
+  box-shadow: 3px 3px 0 #004D40;
   transition: all 0.1s ease;
 }
 
 form button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 #000;
+  box-shadow: 5px 5px 0 #004D40;
 }
 
 form button:active {
   transform: translate(1px, 1px);
-  box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 #004D40;
 }
 
 ul {
@@ -92,9 +92,9 @@ li {
   align-items: center;
   padding: 12px;
   margin-bottom: 10px;
-  border: 2px solid #000;
+  border: 2px solid #004D40;
   background: #fff;
-  box-shadow: 3px 3px 0 #000;
+  box-shadow: 3px 3px 0 #004D40;
   gap: 8px;
 }
 
@@ -110,7 +110,7 @@ li {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  border: 1px solid #000;
+  border: 1px solid #004D40;
   padding: 2px;
   background: #fff;
 }
@@ -129,7 +129,7 @@ li {
 
 li a {
   flex: 1;
-  color: #000;
+  color: #004D40;
   font-weight: normal;
   font-size: 12px;
   text-decoration: none;
@@ -140,16 +140,16 @@ li a {
 }
 
 button.copy {
-  background: #00ff8c;
-  color: #000;
-  border: 2px solid #000;
+  background: #B9F6CA;
+  color: #004D40;
+  border: 2px solid #004D40;
   padding: 5px 10px;
   min-width: 60px;
   border-radius: 2px;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 #004D40;
   text-transform: uppercase;
   transition: all 0.1s ease;
   flex-shrink: 0;
@@ -157,12 +157,12 @@ button.copy {
 
 button.copy:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 #000;
+  box-shadow: 3px 3px 0 #004D40;
 }
 
 button.copy:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 #000;
+  box-shadow: 1px 1px 0 #004D40;
 }
 
 /* Custom Scrollbar */
@@ -172,12 +172,298 @@ button.copy:active {
 
 #container::-webkit-scrollbar-track {
   background: #fff;
-  border-left: 2px solid #000;
+  border-left: 2px solid #004D40;
 }
 
 #container::-webkit-scrollbar-thumb {
-  background: #ffde00;
-  border: 2px solid #000;
+  background: #00897B;
+  border: 2px solid #004D40;
   border-radius: 2px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: #00E676;
+  color: #004D40;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+}
+
+.tab-btn.active {
+  background: #004D40;
+  color: #E8F5E9;
+}
+
+.tab-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+.tab-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #004D40;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.personal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #004D40;
+  background: #fff;
+  box-shadow: 3px 3px 0 #004D40;
+}
+
+.personal-item .label {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.personal-item .value {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+button.edit {
+  background: #00897B;
+  color: #E8F5E9;
+  border: 2px solid #004D40;
+  padding: 5px 10px;
+  min-width: 60px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #004D40;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+
+button.edit:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #004D40;
+}
+
+button.edit:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #004D40;
+}
+
+button.cancel-edit {
+  background: #004D40;
+  color: #E8F5E9;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+}
+
+button.cancel-edit:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+button.cancel-edit:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #004D40;
+}
+
+.edit-all {
+  width: 100%;
+  background: #00E676;
+  color: #004D40;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+  margin-bottom: 15px;
+}
+
+.edit-all:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+.edit-all:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #004D40;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#personalSection {
+  display: none;
+}
+
+#personalSection.active {
+  display: block;
+}
+
+/* Share Profile Button */
+.share-profile {
+  width: 100%;
+  background: #B9F6CA;
+  color: #004D40;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+  margin-top: 20px;
+}
+
+.share-profile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+.share-profile:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #004D40;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  box-shadow: 6px 6px 0 #004D40;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  color: #004D40;
+}
+
+.profile-card {
+  background: #E8F5E9;
+  padding: 15px;
+  border: 2px solid #004D40;
+  margin-bottom: 15px;
+}
+
+.profile-card section {
+  margin-bottom: 15px;
+}
+
+.profile-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: #00897B;
+  color: #E8F5E9;
+  padding: 5px 10px;
+  border: 2px solid #004D40;
+  display: inline-block;
+}
+
+.profile-card .detail-item {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.copy-card {
+  width: 100%;
+  background: #B9F6CA;
+  color: #004D40;
+  border: 2px solid #004D40;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+}
+
+.copy-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+.copy-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 #004D40;
 }
   

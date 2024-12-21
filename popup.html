@@ -8,13 +8,53 @@
 </head>
 <body>
   <div id="container">
-    <h2>Social Links Manager</h2>
-    <form id="addForm">
-      <input type="text" id="platform" placeholder="Platform (e.g., LinkedIn)" required />
-      <input type="url" id="link" placeholder="URL" required />
-      <button type="submit">Add</button>
-    </form>
-    <ul id="linksList"></ul>
+    <h2>Social Vault</h2>
+    
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="social">Social Links</button>
+      <button class="tab-btn" data-tab="personal">Personal Details</button>
+    </div>
+
+    <!-- Social Links Section -->
+    <div class="tab-content active" id="socialSection">
+      <form id="addForm">
+        <input type="text" id="platform" placeholder="Platform (e.g., LinkedIn)" required />
+        <input type="url" id="link" placeholder="URL" required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="linksList"></ul>
+    </div>
+
+    <!-- Personal Details Section -->
+    <div class="tab-content" id="personalSection">
+      <form id="personalForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="Address" placeholder="Address" required />
+        <input type="text" id="pincode" placeholder="Pincode" required />
+        <button type="submit">Save Details</button>
+      </form>
+      <div id="personalDetails"></div>
+    </div>
+
+    <!-- Share Profile Button -->
+    <button id="shareProfile" class="share-profile">Share Your Profile</button>
+
+    <!-- Profile Card Modal (hidden by default) -->
+    <div id="profileCardModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Your Profile Card</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div id="profileCard" class="profile-card">
+          <!-- Card content will be dynamically inserted here -->
+        </div>
+        <button id="copyProfileCard" class="copy-card">Copy Profile Card</button>
+      </div>
+    </div>
   </div>
   <script src="popup.js"></script>
 </body>
