@@ -90,7 +90,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 10px;
   border: 2px solid #000;
   background: #fff;
@@ -98,19 +98,45 @@ li {
   gap: 8px;
 }
 
-li:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 #000;
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0; /* Helps with text overflow */
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1px solid #000;
+  padding: 2px;
+  background: #fff;
+}
+
+.link-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Helps with text overflow */
+  gap: 2px;
+}
+
+.link-text strong {
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 li a {
   flex: 1;
   color: #000;
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 12px;
   text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: block;
 }
 
 button.copy {
@@ -126,6 +152,7 @@ button.copy {
   box-shadow: 2px 2px 0 #000;
   text-transform: uppercase;
   transition: all 0.1s ease;
+  flex-shrink: 0;
 }
 
 button.copy:hover {

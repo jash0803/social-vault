@@ -35,7 +35,7 @@
 
 ## Screenshots
 
-![Screenshot](https://github.com/user-attachments/assets/16383e57-06b3-4b69-a2fa-32bd6caaf161)
+![Screenshot](Screenshot.png)
 
 ---
 
