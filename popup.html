@@ -42,6 +42,9 @@
     <!-- Share Profile Button -->
     <button id="shareProfile" class="share-profile">Share Your Profile</button>
 
+    <!-- Add this after the share profile button and before the modal -->
+    <button id="showAnalytics" class="show-analytics">View Analytics</button>
+
     <!-- Profile Card Modal (hidden by default) -->
     <div id="profileCardModal" class="modal">
       <div class="modal-content">
@@ -53,6 +56,28 @@
           <!-- Card content will be dynamically inserted here -->
         </div>
         <button id="copyProfileCard" class="copy-card">Copy Profile Card</button>
+      </div>
+    </div>
+
+    <!-- Add this new modal for analytics -->
+    <div id="analyticsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Analytics Dashboard</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="analytics-container">
+          <div class="analytics-summary">
+            <div class="stat-card">
+              <h4>Total Clicks</h4>
+              <p id="totalClicks">0</p>
+            </div>
+            <div class="stat-card">
+              <h4>Time Saved</h4>
+              <p id="timeSaved">0s</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

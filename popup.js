@@ -5,18 +5,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const personalDetails = document.getElementById("personalDetails");
     const tabBtns = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
+    const showAnalyticsBtn = document.getElementById("showAnalytics");
+    const analyticsModal = document.getElementById("analyticsModal");
+    const totalClicksElement = document.getElementById("totalClicks");
   
     const getFavicon = (url) => {
         try {
             const domain = new URL(url).hostname;
             return `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
         } catch {
-            return 'default-favicon.jpg'; // You might want to add a default favicon
+            return 'default-favicon.jpg';
+        }
+    };
+  
+    const updateAnalyticsDisplay = () => {
+        const analytics = JSON.parse(localStorage.getItem("linkAnalytics")) || {};
+        const totalClicks = Object.values(analytics).reduce((sum, count) => sum + count, 0);
+        const timeInSeconds = totalClicks * 3;
+        
+        // Update total clicks
+        totalClicksElement.textContent = totalClicks;
+        
+        // Update time saved
+        const timeSavedElement = document.getElementById("timeSaved");
+        if (timeInSeconds < 60) {
+            timeSavedElement.textContent = `${timeInSeconds}s`;
+        } else if (timeInSeconds < 3600) {
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+            timeSavedElement.textContent = `${minutes}m ${seconds}s`;
+        } else {
+            const hours = Math.floor(timeInSeconds / 3600);
+            const minutes = Math.floor((timeInSeconds % 3600) / 60);
+            timeSavedElement.textContent = `${hours}h ${minutes}m`;
         }
     };
   
     const loadLinks = () => {
       const links = JSON.parse(localStorage.getItem("socialLinks")) || [];
+      const analytics = JSON.parse(localStorage.getItem("linkAnalytics")) || {};
+      
       linksList.innerHTML = "";
       links.forEach(({ platform, link }, index) => {
         const li = document.createElement("li");
@@ -30,21 +58,37 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="button-group">
             <button class="edit" data-index="${index}">Edit</button>
-            <button class="copy" data-link="${link}">Copy</button>
+            <button class="copy" data-link="${link}" data-platform="${platform}">Copy</button>
           </div>
         `;
         linksList.appendChild(li);
+        
+        // Initialize analytics for new platforms
+        if (!analytics[platform]) {
+            analytics[platform] = 0;
+        }
       });
   
       document.querySelectorAll("button.copy").forEach(button => {
         button.addEventListener("click", (event) => {
           const linkToCopy = event.target.dataset.link;
+          const platform = event.target.dataset.platform;
+          
           navigator.clipboard.writeText(linkToCopy).then(() => {
+            // Update analytics when copy is successful
+            const analytics = JSON.parse(localStorage.getItem("linkAnalytics")) || {};
+            analytics[platform] = (analytics[platform] || 0) + 1;
+            localStorage.setItem("linkAnalytics", JSON.stringify(analytics));
+            
+            // Update button text
             const originalText = event.target.textContent;
             event.target.textContent = "Copied!";
             setTimeout(() => {
               event.target.textContent = originalText;
             }, 1500);
+            
+            // Update analytics display
+            updateAnalyticsDisplay();
           });
         });
       });
@@ -141,16 +185,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 editAllBtn.style.display = "none"; // Hide edit all button when editing
             });
 
-            // Copy functionality
+            // Update copy button functionality to track analytics
             document.querySelectorAll(".personal-item .copy").forEach(button => {
                 button.addEventListener("click", (event) => {
                     const valueToCopy = event.target.dataset.value;
                     navigator.clipboard.writeText(valueToCopy).then(() => {
+                        // Update analytics when copy is successful
+                        const analytics = JSON.parse(localStorage.getItem("linkAnalytics")) || {};
+                        analytics['personal_details'] = (analytics['personal_details'] || 0) + 1;
+                        localStorage.setItem("linkAnalytics", JSON.stringify(analytics));
+                        
+                        // Update button text
                         const originalText = event.target.textContent;
                         event.target.textContent = "Copied!";
                         setTimeout(() => {
                             event.target.textContent = originalText;
                         }, 1500);
+                        
+                        // Update analytics display
+                        updateAnalyticsDisplay();
                     });
                 });
             });
@@ -301,7 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
   
-    // Copy profile card content
+    // Track profile card copy clicks too
     copyProfileCardBtn.addEventListener("click", () => {
         const personalDetails = JSON.parse(localStorage.getItem("personalDetails")) || {};
         const socialLinks = JSON.parse(localStorage.getItem("socialLinks")) || [];
@@ -328,12 +381,39 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         navigator.clipboard.writeText(cardText).then(() => {
+            // Update analytics when copy is successful
+            const analytics = JSON.parse(localStorage.getItem("linkAnalytics")) || {};
+            analytics['profile_card'] = (analytics['profile_card'] || 0) + 1;
+            localStorage.setItem("linkAnalytics", JSON.stringify(analytics));
+            
+            // Update button text
             const originalText = copyProfileCardBtn.textContent;
             copyProfileCardBtn.textContent = "Copied!";
             setTimeout(() => {
                 copyProfileCardBtn.textContent = originalText;
             }, 1500);
+            
+            // Update analytics display
+            updateAnalyticsDisplay();
         });
+    });
+  
+    // Add analytics modal handlers
+    showAnalyticsBtn.addEventListener("click", () => {
+        updateAnalyticsDisplay();
+        analyticsModal.style.display = "block";
+    });
+  
+    // Add close handler for analytics modal
+    analyticsModal.querySelector(".close-modal").addEventListener("click", () => {
+        analyticsModal.style.display = "none";
+    });
+  
+    // Close analytics modal when clicking outside
+    window.addEventListener("click", (event) => {
+        if (event.target === analyticsModal) {
+            analyticsModal.style.display = "none";
+        }
     });
   });
   

@@ -1,15 +1,19 @@
 {
     "manifest_version": 3,
-    "name": "Social Links Manager",
-    "version": "0.0.0.1",
-    "description": "Store and manage your social media links.",
+    "name": "Social Vault",
+    "version": "0.0.0.2",
+    "description": "Your Social Links, One Click Away!",
+    "author": {
+    "email": "jashshah780@gmail.com"
+    },
     "permissions": ["clipboardWrite"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": {
-        "16": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
       }
     }
   }

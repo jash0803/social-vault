@@ -466,4 +466,70 @@ button.cancel-edit:active {
   transform: translate(1px, 1px);
   box-shadow: 2px 2px 0 #004D40;
 }
+
+.show-analytics {
+  width: 100%;
+  background: #00897B;
+  color: #fff;
+  border: 3px solid #004D40;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #004D40;
+  transition: all 0.1s ease;
+  margin-top: 10px;
+}
+
+.show-analytics:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #004D40;
+}
+
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analytics-summary {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 20px;
+  background: #E8F5E9;
+  border: 2px solid #004D40;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 #004D40;
+  text-align: center;
+}
+
+.stat-card h4 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #004D40;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #00897B;
+}
+
+/* Remove unused analytics styles */
+.analytics-details,
+.clicks-list,
+.click-item,
+.click-platform,
+.click-count {
+  display: none;
+}
   
