@@ -1,17 +1,19 @@
-# Social Vault - Chrome Extension
+# Social Vault
 
-**Social Vault** is a lightweight and intuitive Chrome extension designed to store all your social media links in one convenient place. With Social Vault, you can quickly access and copy your links while filling out forms or sharing them with others.
+Social Vault is a Chrome extension designed to manage and share your social links and personal details efficiently. With its user-friendly interface, it allows you to securely store and share your information in a dynamic profile card, directly from your browser.
 
----
+## Product Images
+![Image 1](1.png)
+![Image 2](2.png)
+![Image 3](3.png)
+![Image 4](4.png)
 
 ## Features
 
-- **Centralized Storage**: Keep all your social media links in one organized location.
-- **Quick Access**: Easily copy and paste your links directly into forms or messages.
-- **User-Friendly Interface**: Sleek, responsive design with an neo-brutalism theme.
-- **Cross-Platform Compatibility**: Works seamlessly across different devices and browsers.
-
----
+- **Social Links Manager**: Add, view, and manage your social media links easily.
+- **Personal Details Section**: Store personal information like name, phone number, email, address, and pincode.
+- **Profile Sharing**: Generate a dynamic profile card to share your information.
+- **Analytics Dashboard**: Track total clicks and time saved using your profile.
 
 ## How to Install
 
@@ -22,51 +24,36 @@
 5. Select the folder containing the extension's source files.
 6. The extension will appear in your toolbar, ready to use.
 
----
+## Usage
 
-## How to Use
+1. **Adding Social Links**:
 
-1. Click on the **Social Vault** icon in your browser toolbar.
-2. Add your social media links by entering the platform name and URL.
-3. View your saved links in the list.
-4. Use the **Copy** button to instantly copy a link to your clipboard.
+   - Enter the platform name (e.g., LinkedIn) and the URL.
+   - Click "Add" to save the link.
 
----
+2. **Storing Personal Details**:
 
-## Screenshots
+   - Fill in the form with your personal details.
+   - Click "Save Details" to store the information.
 
-![Screenshot](Screenshot.png)
+3. **Profile Sharing**:
 
----
+   - Click "Share Your Profile" to generate a dynamic profile card.
+   - Copy the profile card to share it with others.
 
-## Technologies Used
+4. **Viewing Analytics**:
 
-- **HTML**: For the structure of the extension.
-- **CSS**: To style the user interface.
-- **JavaScript**: To handle the extension's functionality.
+   - Click "View Analytics" to see the total clicks and time saved using your profile.
 
----
+## Contributing
 
-## Future Enhancements
+Contributions are welcome! Feel free to submit issues or pull requests to enhance the functionality of Social Vault.
 
-- Add support for automatic form filling with saved links.
-- Enable link categorization and tagging.
-- Integrate cloud backup for link storage.
+## Support
 
----
-
-## Contribution
-
-Contributions are welcome! Feel free to fork the repository and submit a pull request. For major changes, please open an issue to discuss what you would like to change.
-
----
+If you find this project useful, please consider starring the repository to show your support!
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the [MIT License](LICENSE).
 
----
-
-## Contact
-
-If you have any questions or feedback, feel free to reach out via [GitHub Issues](https://github.com/your-repo/issues).
