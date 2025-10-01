@@ -17,6 +17,8 @@ Social Vault is a Chrome extension designed to manage and share your social link
 
 ## How to Install
 
+Watch this video: https://www.youtube.com/watch?v=kanIAQYImhY
+
 1. Download the extension's source code.
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable "Developer mode" in the top-right corner.
