@@ -1,86 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Links Manager</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Vault</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-theme="system">
   <div id="container">
-    <h2>Social Vault</h2>
-    
-    <!-- Tab Navigation -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="social">Social Links</button>
-      <button class="tab-btn" data-tab="personal">Personal Details</button>
+    <header class="app-header">
+      <div class="brand">
+        <img src="icon32.png" alt="" class="brand-mark" />
+        <span class="brand-name">Social Vault</span>
+      </div>
+      <div class="header-actions">
+        <select id="profileSwitcher" class="profile-switcher" aria-label="Active profile"></select>
+        <button id="openSettings" class="icon-btn" title="Settings" aria-label="Settings">⚙</button>
+      </div>
+    </header>
+
+    <div class="tabs segmented" role="tablist">
+      <button class="tab-btn active" data-tab="social" role="tab">Links</button>
+      <button class="tab-btn" data-tab="personal" role="tab">Details</button>
     </div>
 
-    <!-- Social Links Section -->
-    <div class="tab-content active" id="socialSection">
-      <form id="addForm">
-        <input type="text" id="platform" placeholder="Platform (e.g., LinkedIn)" required />
+    <section class="tab-content active" id="socialSection" role="tabpanel">
+      <form id="addForm" class="stack">
+        <input type="text" id="platform" placeholder="Platform (e.g. LinkedIn)" required />
         <input type="url" id="link" placeholder="URL" required />
-        <button type="submit">Add</button>
+        <div class="row">
+          <button type="submit" class="primary-btn">Add link</button>
+          <button type="button" id="cancelLinkEdit" class="ghost-btn hidden">Cancel</button>
+        </div>
       </form>
-      <ul id="linksList"></ul>
-    </div>
+      <ul id="linksList" class="link-list"></ul>
+    </section>
 
-    <!-- Personal Details Section -->
-    <div class="tab-content" id="personalSection">
-      <form id="personalForm">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="tel" id="phone" placeholder="Phone Number" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-        <input type="text" id="Address" placeholder="Address" required />
-        <input type="text" id="pincode" placeholder="Pincode" required />
-        <button type="submit">Save Details</button>
-      </form>
+    <section class="tab-content" id="personalSection" role="tabpanel">
       <div id="personalDetails"></div>
-    </div>
+    </section>
 
-    <!-- Share Profile Button -->
-    <button id="shareProfile" class="share-profile">Share Your Profile</button>
+    <footer class="footer-actions">
+      <button id="shareProfile" class="secondary-btn">Share profile</button>
+      <button id="showAnalytics" class="ghost-btn">Analytics</button>
+    </footer>
+  </div>
 
-    <!-- Add this after the share profile button and before the modal -->
-    <button id="showAnalytics" class="show-analytics">View Analytics</button>
-
-    <!-- Profile Card Modal (hidden by default) -->
-    <div id="profileCardModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Your Profile Card</h3>
-          <button class="close-modal">&times;</button>
-        </div>
-        <div id="profileCard" class="profile-card">
-          <!-- Card content will be dynamically inserted here -->
-        </div>
-        <button id="copyProfileCard" class="copy-card">Copy Profile Card</button>
+  <div id="profileCardModal" class="modal" hidden>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3>Your profile card</h3>
+        <button class="close-modal" aria-label="Close">&times;</button>
+      </header>
+      <div id="profileCard" class="profile-card"></div>
+      <div class="row">
+        <button id="copyProfileCard" class="primary-btn">Copy</button>
       </div>
     </div>
+  </div>
 
-    <!-- Add this new modal for analytics -->
-    <div id="analyticsModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Analytics Dashboard</h3>
-          <button class="close-modal">&times;</button>
+  <div id="analyticsModal" class="modal" hidden>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3>Analytics</h3>
+        <button class="close-modal" aria-label="Close">&times;</button>
+      </header>
+      <div class="analytics-summary">
+        <div class="stat-card">
+          <span class="stat-label">Total clicks</span>
+          <span id="totalClicks" class="stat-value">0</span>
         </div>
-        <div class="analytics-container">
-          <div class="analytics-summary">
-            <div class="stat-card">
-              <h4>Total Clicks</h4>
-              <p id="totalClicks">0</p>
-            </div>
-            <div class="stat-card">
-              <h4>Time Saved</h4>
-              <p id="timeSaved">0s</p>
-            </div>
-          </div>
+        <div class="stat-card">
+          <span class="stat-label">Time saved</span>
+          <span id="timeSaved" class="stat-value">0s</span>
         </div>
       </div>
     </div>
   </div>
+
+  <div id="settingsModal" class="modal" hidden>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3>Settings</h3>
+        <button class="close-modal" aria-label="Close">&times;</button>
+      </header>
+
+      <div class="settings-section">
+        <h4>Theme</h4>
+        <div class="segmented small" role="radiogroup" aria-label="Theme">
+          <button class="tab-btn theme-btn" data-theme="light" role="radio">Light</button>
+          <button class="tab-btn theme-btn" data-theme="dark" role="radio">Dark</button>
+          <button class="tab-btn theme-btn" data-theme="system" role="radio">System</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h4>Profiles</h4>
+        <ul id="profileList" class="profile-list"></ul>
+        <form id="newProfileForm" class="row">
+          <input type="text" id="newProfileName" placeholder="New profile name" required />
+          <button type="submit" class="primary-btn">Add</button>
+        </form>
+      </div>
+
+      <div class="settings-section">
+        <h4>Backup</h4>
+        <div class="row">
+          <button id="exportBtn" class="secondary-btn">Export JSON</button>
+          <button id="importBtn" class="secondary-btn">Import JSON</button>
+          <input type="file" id="importFile" accept="application/json" hidden />
+        </div>
+        <p class="hint">Data is stored in your Chrome sync storage. It moves with your Google account across devices.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="storage.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

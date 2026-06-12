@@ -1,20 +1,46 @@
 {
-    "manifest_version": 3,
-    "name": "Social Vault",
-    "version": "0.0.0.2",
-    "description": "Your Social Links, One Click Away!",
-    "author": {
+  "manifest_version": 3,
+  "name": "Social Vault",
+  "version": "1.0.0",
+  "description": "Save your social links and contact details once. Copy them, or right-click any form field to paste a saved value.",
+  "author": {
     "email": "jashshah780@gmail.com"
-    },
-    "permissions": ["clipboardWrite"],
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "icon16.png",
-        "32": "icon32.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-      }
+  },
+  "permissions": [
+    "clipboardWrite",
+    "storage",
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Open Social Vault"
     }
   }
-  
+}
