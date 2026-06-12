@@ -19,6 +19,12 @@
       </div>
     </header>
 
+    <div class="autofill-bar">
+      <button id="fillPage" class="primary-btn">Fill this page</button>
+      <span id="fillStatus" class="fill-status" role="status" aria-live="polite"></span>
+      <span id="fillShortcut" class="shortcut-keys-wrap" title="Keyboard shortcut"></span>
+    </div>
+
     <div class="tabs segmented" role="tablist">
       <button class="tab-btn active" data-tab="social" role="tab">Links</button>
       <button class="tab-btn" data-tab="personal" role="tab">Details</button>
@@ -65,15 +71,30 @@
         <h3>Analytics</h3>
         <button class="close-modal" aria-label="Close">&times;</button>
       </header>
-      <div class="analytics-summary">
+
+      <div class="stat-hero">
+        <span class="stat-hero-label">Total time saved</span>
+        <span id="timeSaved" class="stat-hero-value">0s</span>
+        <span id="timeSavedBreakdown" class="stat-hero-sub"></span>
+      </div>
+
+      <div class="analytics-summary two-up">
         <div class="stat-card">
-          <span class="stat-label">Total clicks</span>
-          <span id="totalClicks" class="stat-value">0</span>
+          <span class="stat-label">Copies</span>
+          <span id="copyCount" class="stat-value">0</span>
+          <span id="copyTime" class="stat-foot">0s saved · 3s each</span>
         </div>
         <div class="stat-card">
-          <span class="stat-label">Time saved</span>
-          <span id="timeSaved" class="stat-value">0s</span>
+          <span class="stat-label">Fields filled</span>
+          <span id="fillCount" class="stat-value">0</span>
+          <span id="fillTime" class="stat-foot">0s saved · 5s each</span>
         </div>
+      </div>
+
+      <div class="stat-card stat-card-wide">
+        <span class="stat-label">Saved entries on this profile</span>
+        <span id="entriesCount" class="stat-value">0</span>
+        <span id="entriesBreakdown" class="stat-foot">0 links · 0 details</span>
       </div>
     </div>
   </div>
@@ -92,6 +113,15 @@
           <button class="tab-btn theme-btn" data-theme="dark" role="radio">Dark</button>
           <button class="tab-btn theme-btn" data-theme="system" role="radio">System</button>
         </div>
+      </div>
+
+      <div class="settings-section">
+        <h4>Keyboard shortcuts</h4>
+        <ul id="shortcutList" class="shortcut-list"></ul>
+        <p class="hint">
+          Customize these at
+          <a href="#" id="openShortcutsPage">chrome://extensions/shortcuts</a>.
+        </p>
       </div>
 
       <div class="settings-section">

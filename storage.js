@@ -50,21 +50,52 @@ async function setSettings(settings) {
   await set({ settings });
 }
 
+// Analytics has two semantic buckets:
+//   copies        — every time a value is put on the clipboard via Copy buttons
+//   filledFields  — every form field that was filled (right-click paste = 1,
+//                   "Fill this page" = N matched fields)
+// Time saved is derived: copies * 3s + filledFields * 5s.
+// `totalClicks` and `perAction` are kept for backward compatibility / breakdown.
+const SECONDS_PER_COPY = 3;
+const SECONDS_PER_FILL = 5;
+
 async function getAnalytics() {
   const { analytics } = await get("analytics");
-  return analytics || { totalClicks: 0, perAction: {} };
+  const a = analytics || {};
+  return {
+    copies: a.copies || 0,
+    filledFields: a.filledFields || 0,
+    totalClicks: a.totalClicks || 0,
+    perAction: a.perAction || {},
+  };
 }
 
 async function setAnalytics(analytics) {
   await set({ analytics });
 }
 
-async function recordAction(actionKey) {
+async function recordCopy(actionKey) {
   const a = await getAnalytics();
-  a.totalClicks = (a.totalClicks || 0) + 1;
+  a.copies += 1;
+  a.totalClicks += 1;
   a.perAction[actionKey] = (a.perAction[actionKey] || 0) + 1;
   await setAnalytics(a);
   return a;
+}
+
+async function recordFill(actionKey, count = 1) {
+  if (!count || count < 1) return;
+  const a = await getAnalytics();
+  a.filledFields += count;
+  a.totalClicks += count;
+  a.perAction[actionKey] = (a.perAction[actionKey] || 0) + count;
+  await setAnalytics(a);
+  return a;
+}
+
+// Back-compat shim — older call sites can keep calling recordAction.
+async function recordAction(actionKey) {
+  return recordCopy(actionKey);
 }
 
 async function getProfile(id) {
@@ -233,6 +264,8 @@ async function importAll(payload, { merge = false } = {}) {
 window.SVStorage = {
   SCHEMA_VERSION,
   DEFAULT_DETAILS,
+  SECONDS_PER_COPY,
+  SECONDS_PER_FILL,
   migrateIfNeeded,
   getMeta,
   setMeta,
@@ -240,6 +273,8 @@ window.SVStorage = {
   setSettings,
   getAnalytics,
   recordAction,
+  recordCopy,
+  recordFill,
   getProfile,
   putProfile,
   deleteProfile,

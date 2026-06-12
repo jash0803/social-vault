@@ -109,6 +109,19 @@ body { width: 380px; min-height: 480px; }
 }
 .icon-btn:hover { background: var(--surface-2); }
 
+.autofill-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.fill-status { color: var(--text-muted); font-size: 12px; flex: 1; min-width: 0; }
+.autofill-bar .shortcut-keys-wrap { margin-left: auto; flex: none; }
+
 .segmented {
   display: inline-flex;
   background: var(--surface-2);
@@ -196,6 +209,35 @@ input::placeholder { color: var(--text-muted); }
 .ghost-btn.danger { color: var(--danger); }
 
 button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.icon-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 120ms, color 120ms, border-color 120ms, transform 80ms;
+}
+.icon-action:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.icon-action:active { transform: translateY(1px); }
+.icon-action.primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: transparent;
+}
+.icon-action.primary:hover { background: var(--accent-strong); color: var(--accent-contrast); }
+.icon-action.danger:hover { color: var(--danger); border-color: var(--danger); }
+.icon-action.did-copy { background: var(--accent); color: var(--accent-contrast); border-color: transparent; }
 
 .link-list {
   list-style: none;
@@ -307,6 +349,8 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .card-row { padding: 1px 0; word-break: break-all; }
 
 .analytics-summary { display: flex; gap: 8px; }
+.analytics-summary.two-up { margin-bottom: 8px; }
+
 .stat-card {
   flex: 1;
   background: var(--surface-2);
@@ -317,8 +361,26 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   flex-direction: column;
   gap: 4px;
 }
+.stat-card-wide { width: 100%; }
 .stat-label { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
 .stat-value { font-size: 22px; font-weight: 700; }
+.stat-foot { color: var(--text-muted); font-size: 11px; }
+
+.stat-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: var(--accent-contrast);
+  border-radius: var(--radius);
+  padding: 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-hero-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85; }
+.stat-hero-value { font-size: 32px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.stat-hero-sub { font-size: 11px; opacity: 0.85; }
 
 .settings-section { margin-bottom: 14px; }
 .settings-section h4 { margin: 0 0 6px; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
@@ -334,6 +396,32 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 .profile-name { font-size: 13px; }
 .hint { color: var(--text-muted); font-size: 11px; margin: 6px 0 0; }
+.hint a { color: var(--accent-strong); text-decoration: none; }
+.hint a:hover { text-decoration: underline; }
+
+.shortcut-list { list-style: none; padding: 0; margin: 0 0 4px; display: flex; flex-direction: column; gap: 4px; }
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+}
+.shortcut-label { font-size: 13px; }
+.shortcut-keys {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--text);
+}
+.shortcut-keys.unset { color: var(--text-muted); font-style: italic; }
+.shortcut-keys-wrap { display: inline-flex; align-items: center; gap: 4px; }
+.shortcut-sep { color: var(--text-muted); font-size: 11px; }
 
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
